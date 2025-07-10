@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Internet Speed Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #2196f3;
+    }
+    #gauges {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    canvas {
+      width: 200px;
+      height: 200px;
+    }
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1976d2;
+    }
+    #info {
+      margin-top: 30px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Internet Speed Test</h1>
+  <div id="gauges">
+    <div>
+      <canvas id="downloadGauge"></canvas>
+      <p><strong>Download Speed</strong></p>
+    </div>
+    <div>
+      <canvas id="uploadGauge"></canvas>
+      <p><strong>Upload Speed</strong></p>
+    </div>
+  </div>
+  <button onclick="startSpeedTest()">Start Test</button>
+  <div id="info"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let downloadChart, uploadChart;
+
+    function createGauge(id, label) {
+      const ctx = document.getElementById(id).getContext("2d");
+      return new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: [label, ""],
+          datasets: [{
+            data: [0, 100],
+            backgroundColor: ["#4caf50", "#e0e0e0"],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          cutout: "80%",
+          responsive: true,
+          plugins: {
+            tooltip: { enabled: false },
+            legend: { display: false },
+            title: {
+              display: true,
+              text: "0 Mbps",
+              color: "#333",
+              font: { size: 20 }
+            }
+          }
+        }
+      });
+    }
+
+    function updateGauge(chart, value) {
+      chart.data.datasets[0].data[0] = value;
+      chart.data.datasets[0].data[1] = 100 - value;
+      chart.options.plugins.title.text = `${value.toFixed(2)} Mbps`;
+      chart.update();
+    }
+
+    function startSpeedTest() {
+      document.getElementById("info").innerHTML = "Testing download speed...";
+      testDownloadSpeed().then(downloadSpeed => {
+        updateGauge(downloadChart, Math.min(downloadSpeed, 100));
+        document.getElementById("info").innerHTML = `Download: ${downloadSpeed.toFixed(2)} Mbps<br>Testing upload speed...`;
+
+        testUploadSpeed().then(uploadSpeed => {
+          updateGauge(uploadChart, Math.min(uploadSpeed, 100));
+          document.getElementById("info").innerHTML += `<br>Upload: ${uploadSpeed.toFixed(2)} Mbps`;
+          showNetworkInfo();
+        });
+      });
+    }
+
+    function testDownloadSpeed() {
+      const imageAddr = "https://speed.cloudflare.com/__down?bytes=10000000";
+      const startTime = new Date().getTime();
+      return fetch(imageAddr).then(response => response.blob()).then(() => {
+        const endTime = new Date().getTime();
+        const duration = (endTime - startTime) / 1000;
+        const bitsLoaded = 10000000 * 8;
+        const speedBps = bitsLoaded / duration;
+        return speedBps / 1024 / 1024;
+      });
+    }
+
+    function testUploadSpeed() {
+      const data = new Uint8Array(1000000); // 1MB dummy data
+      const startTime = new Date().getTime();
+      return fetch("https://httpbin.org/post", {
+        method: "POST",
+        body: data
+      }).then(() => {
+        const endTime = new Date().getTime();
+        const duration = (endTime - startTime) / 1000;
+        const bitsUploaded = data.length * 8;
+        const speedBps = bitsUploaded / duration;
+        return speedBps / 1024 / 1024;
+      });
+    }
+
+    function showNetworkInfo() {
+      fetch("https://api.ipify.org?format=json")
+        .then(res => res.json())
+        .then(data => {
+          const ip = data.ip;
+          fetch(`https://ipapi.co/${ip}/json/`)
+            .then(res => res.json())
+            .then(info => {
+              document.getElementById("info").innerHTML += `
+                <br><br><strong>Your IP:</strong> ${ip}
+                <br><strong>ISP:</strong> ${info.org || "Unknown"}
+                <br><strong>Location:</strong> ${info.city}, ${info.country_name}
+                <br><strong>Server:</strong> Cloudflare CDN / httpbin.org
+              `;
+            });
+        });
+    }
+
+    window.onload = () => {
+      downloadChart = createGauge("downloadGauge", "Download");
+      uploadChart = createGauge("uploadGauge", "Upload");
+    };
+  </script>
+</body>
+</html>
