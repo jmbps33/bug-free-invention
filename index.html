@@ -1,166 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Internet Speed Test</title>
+  <meta charset="UTF-8">
+  <title>Membership Form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f8fb;
-      text-align: center;
-      padding: 30px;
+      margin: 30px;
     }
-    h1 {
-      color: #2196f3;
-    }
-    #gauges {
+    header {
       display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+    }
+    .logo {
+      height: 60px;
+    }
+    .version {
+      font-size: 14px;
+      color: gray;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .form-section {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    .signature {
       margin-top: 40px;
     }
-    canvas {
-      width: 200px;
-      height: 200px;
-    }
-    button {
-      margin-top: 30px;
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1976d2;
-    }
-    #info {
-      margin-top: 30px;
-      font-size: 16px;
+    .qr-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Internet Speed Test</h1>
-  <div id="gauges">
-    <div>
-      <canvas id="downloadGauge"></canvas>
-      <p><strong>Download Speed</strong></p>
-    </div>
-    <div>
-      <canvas id="uploadGauge"></canvas>
-      <p><strong>Upload Speed</strong></p>
-    </div>
-  </div>
-  <button onclick="startSpeedTest()">Start Test</button>
-  <div id="info"></div>
+  <header>
+    <img src="logo.png" alt="Logo" class="logo">
+    <div class="version">Version: v2.0</div>
+  </header>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <h2>MEMBERSHIP FORM - LOYALTY CARD ID (2025–2028)</h2>
+
+  <form id="membershipForm">
+    <div class="form-section">
+      <label>Last Name: <input type="text" id="lastName" required></label>
+      <label>First Name: <input type="text" id="firstName" required></label>
+      <label>Middle Name: <input type="text" id="middleName" required></label>
+      <label>Address: <input type="text" required></label>
+      <label>Contact Number: <input type="text" required></label>
+      <label>Email Address: <input type="email" required></label>
+
+      <label>Father's Name: <input type="text" required></label>
+      <label>Father's Contact Number: <input type="text" required></label>
+
+      <label>Mother's Maiden Name: <input type="text" required></label>
+      <label>Mother's Contact Number: <input type="text" required></label>
+    </div>
+
+    <div class="qr-section">
+      <div>
+        <label><strong>Auto-Generated LCN Number:</strong></label>
+        <p id="lcnNumber">--</p>
+      </div>
+      <canvas id="qrCode"></canvas>
+    </div>
+
+    <div class="signature">
+      <p>Signature Over Printed Name (Customer): _________________________</p>
+      <p>Signature Over Printed Name (Admin): _________________________</p>
+    </div>
+
+    <p><em>Note: You may claim your DIGITAL LOYALTY CARD ID on OCTOBER 13, 2025 (Via Website)</em></p>
+    <p><em>Note: You may claim your PHYSICAL LOYALTY CARD ID on NOVEMBER 13, 2025</em></p>
+  </form>
+
   <script>
-    let downloadChart, uploadChart;
-
-    function createGauge(id, label) {
-      const ctx = document.getElementById(id).getContext("2d");
-      return new Chart(ctx, {
-        type: "doughnut",
-        data: {
-          labels: [label, ""],
-          datasets: [{
-            data: [0, 100],
-            backgroundColor: ["#4caf50", "#e0e0e0"],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          cutout: "80%",
-          responsive: true,
-          plugins: {
-            tooltip: { enabled: false },
-            legend: { display: false },
-            title: {
-              display: true,
-              text: "0 Mbps",
-              color: "#333",
-              font: { size: 20 }
-            }
-          }
-        }
-      });
+    function generateLCN(first, middle, last) {
+      const year = new Date().getFullYear().toString().slice(2);
+      const cleaned = (str) => str.replace(/\s+/g, '');
+      return `${year}-JMBPS-${cleaned(first)},${cleaned(middle)},${cleaned(last)}-00000`;
     }
 
-    function updateGauge(chart, value) {
-      chart.data.datasets[0].data[0] = value;
-      chart.data.datasets[0].data[1] = 100 - value;
-      chart.options.plugins.title.text = `${value.toFixed(2)} Mbps`;
-      chart.update();
+    const firstNameEl = document.getElementById('firstName');
+    const middleNameEl = document.getElementById('middleName');
+    const lastNameEl = document.getElementById('lastName');
+    const lcnDisplay = document.getElementById('lcnNumber');
+    const qr = new QRious({ element: document.getElementById('qrCode'), size: 150 });
+
+    function updateQRandLCN() {
+      const first = firstNameEl.value.trim();
+      const middle = middleNameEl.value.trim();
+      const last = lastNameEl.value.trim();
+      if (first && middle && last) {
+        const lcn = generateLCN(first, middle, last);
+        lcnDisplay.textContent = lcn;
+        qr.value = lcn;
+      }
     }
 
-    function startSpeedTest() {
-      document.getElementById("info").innerHTML = "Testing download speed...";
-      testDownloadSpeed().then(downloadSpeed => {
-        updateGauge(downloadChart, Math.min(downloadSpeed, 100));
-        document.getElementById("info").innerHTML = `Download: ${downloadSpeed.toFixed(2)} Mbps<br>Testing upload speed...`;
-
-        testUploadSpeed().then(uploadSpeed => {
-          updateGauge(uploadChart, Math.min(uploadSpeed, 100));
-          document.getElementById("info").innerHTML += `<br>Upload: ${uploadSpeed.toFixed(2)} Mbps`;
-          showNetworkInfo();
-        });
-      });
-    }
-
-    function testDownloadSpeed() {
-      const imageAddr = "https://speed.cloudflare.com/__down?bytes=10000000";
-      const startTime = new Date().getTime();
-      return fetch(imageAddr).then(response => response.blob()).then(() => {
-        const endTime = new Date().getTime();
-        const duration = (endTime - startTime) / 1000;
-        const bitsLoaded = 10000000 * 8;
-        const speedBps = bitsLoaded / duration;
-        return speedBps / 1024 / 1024;
-      });
-    }
-
-    function testUploadSpeed() {
-      const data = new Uint8Array(1000000); // 1MB dummy data
-      const startTime = new Date().getTime();
-      return fetch("https://httpbin.org/post", {
-        method: "POST",
-        body: data
-      }).then(() => {
-        const endTime = new Date().getTime();
-        const duration = (endTime - startTime) / 1000;
-        const bitsUploaded = data.length * 8;
-        const speedBps = bitsUploaded / duration;
-        return speedBps / 1024 / 1024;
-      });
-    }
-
-    function showNetworkInfo() {
-      fetch("https://api.ipify.org?format=json")
-        .then(res => res.json())
-        .then(data => {
-          const ip = data.ip;
-          fetch(`https://ipapi.co/${ip}/json/`)
-            .then(res => res.json())
-            .then(info => {
-              document.getElementById("info").innerHTML += `
-                <br><br><strong>Your IP:</strong> ${ip}
-                <br><strong>ISP:</strong> ${info.org || "Unknown"}
-                <br><strong>Location:</strong> ${info.city}, ${info.country_name}
-                <br><strong>Server:</strong> Cloudflare CDN / httpbin.org
-              `;
-            });
-        });
-    }
-
-    window.onload = () => {
-      downloadChart = createGauge("downloadGauge", "Download");
-      uploadChart = createGauge("uploadGauge", "Upload");
-    };
+    firstNameEl.addEventListener('input', updateQRandLCN);
+    middleNameEl.addEventListener('input', updateQRandLCN);
+    lastNameEl.addEventListener('input', updateQRandLCN);
   </script>
 </body>
 </html>
