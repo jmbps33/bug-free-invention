@@ -1,18 +1,30 @@
-# Internet Speed Test
 
-This is a simple HTML+JavaScript internet speed test that:
-- Displays **Download** and **Upload** speeds using speedometer-style gauges
-- Shows your IP address, ISP, and location using `ipapi.co`
-- Uses Cloudflare CDN and httpbin.org as test servers
+# JMB Membership Form Package
 
-## Live Preview
-You can host this using GitHub Pages or any static hosting service.
+This package includes all the necessary files to use the JMB Printing Services membership form locally or on a website.
+
+## Files Included
+- **jmb_membership_form.html** – The interactive membership form.
+- **Picture1.png** – Logo used in the header.
+- **README.txt** – This file.
+
+## Features
+- Dynamic LCN Number generation (format: YY-JMBPS-FML-00001).
+- Auto-generated QR code based on the user’s name and LCN.
+- Upload fields for profile picture and signature.
+- Button to save the form as a PDF.
+- Instruction to email uploads to `jmbprintingservices12@gmail.com`.
 
 ## Usage
-1. Open `index.html` in your browser
-2. Click "Start Test" to measure your download/upload speed
-3. View your speed and connection info
+1. Place all files in the same directory.
+2. Open `jmb_membership_form.html` in any web browser.
+3. Fill out the form. QR and LCN will be auto-generated.
+4. Upload your picture and signature.
+5. Click **"Save as PDF"** to download a filled version.
+6. Email your **picture** and **signature** to: `jmbprintingservices12@gmail.com`
 
-## Credits
-- [Chart.js](https://www.chartjs.org/) for the gauge charts
-- [ipapi.co](https://ipapi.co/) and [ipify.org](https://www.ipify.org/) for network info
+## Notes
+- Internet connection is required to generate the QR code.
+- This form works offline after the QR is generated.
+
+— JMB Printing Services
