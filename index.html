@@ -1,123 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Membership Form</title>
+  <meta charset="UTF-8" />
+  <title>JMB Loyalty ID Generator</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #000;
-      padding-bottom: 10px;
-    }
-    .logo {
-      height: 60px;
-    }
-    .version {
-      font-size: 14px;
-      color: gray;
-    }
-    h2 {
+      background: #f9f9f9;
       text-align: center;
-      margin-top: 10px;
+      padding: 30px;
     }
-    .form-section {
+
+    .logo {
+      width: 180px;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      width: 85%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .output-box {
       margin-top: 20px;
     }
-    label {
-      display: block;
-      margin-top: 10px;
+
+    canvas {
+      margin-top: 15px;
     }
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
+
+    .version {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #555;
     }
-    .signature {
-      margin-top: 40px;
-    }
-    .qr-section {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
+
+    .readme {
+      margin-top: 30px;
+      background: #fff7d6;
+      border-left: 4px solid #f4c400;
+      padding: 15px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="Picture1.png" alt="Logo" class="logo">
-    <div class="version">Version: v2.0</div>
-  </header>
+  <!-- Logo Header -->
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGYAAARpCAYAAACMHwEmAAEAAElEQVR4nOzdeWBU1dnH8e85d7InEA" class="logo" alt="JMB Logo" />
+  <h2>JMB PRINTING SERVICES</h2>
+  <p><strong>High Quality Prints</strong></p>
 
-  <h2>MEMBERSHIP FORM - LOYALTY CARD ID (2025–2028)</h2>
-
-  <form id="membershipForm">
-    <div class="form-section">
-      <label>Last Name: <input type="text" id="lastName" required></label>
-      <label>First Name: <input type="text" id="firstName" required></label>
-      <label>Middle Name: <input type="text" id="middleName" required></label>
-      <label>Address: <input type="text" required></label>
-      <label>Contact Number: <input type="text" required></label>
-      <label>Email Address: <input type="email" required></label>
-
-      <label>Father's Name: <input type="text" required></label>
-      <label>Father's Contact Number: <input type="text" required></label>
-
-      <label>Mother's Maiden Name: <input type="text" required></label>
-      <label>Mother's Contact Number: <input type="text" required></label>
-    </div>
-
-    <div class="qr-section">
-      <div>
-        <label><strong>Auto-Generated LCN Number:</strong></label>
-        <p id="lcnNumber">--</p>
-      </div>
+  <!-- Form -->
+  <div class="form-container">
+    <h3>Loyalty Card ID Generator</h3>
+    <input type="text" id="lastName" placeholder="Last Name" />
+    <input type="text" id="firstName" placeholder="Given Name" />
+    <input type="text" id="middleName" placeholder="Middle Name" />
+    
+    <div class="output-box">
+      <p><strong>LCN Number:</strong></p>
+      <p id="lcnOutput">--</p>
       <canvas id="qrCode"></canvas>
     </div>
+  </div>
 
-    <div class="signature">
-      <p>Signature Over Printed Name (Customer): _________________________</p>
-      <p>Signature Over Printed Name (Admin): _________________________</p>
-    </div>
+  <div class="version">Updated Version: 1.0.1 — July 2025</div>
 
-    <p><em>Note: You may claim your DIGITAL LOYALTY CARD ID on OCTOBER 13, 2025 (Via Website)</em></p>
-    <p><em>Note: You may claim your PHYSICAL LOYALTY CARD ID on NOVEMBER 13, 2025</em></p>
-  </form>
+  <!-- ReadMe -->
+  <div class="readme">
+    <h4>README</h4>
+    <ul>
+      <li>Input LAST NAME, GIVEN NAME, and MIDDLE NAME to generate LCN and QR.</li>
+      <li><strong>LCN Format:</strong> <code>YY-JMBPS-[FML]-00001</code></li>
+      <li>FML = First letters of Given, Middle, Last Names</li>
+      <li>QR Code is auto-generated based on the LCN number.</li>
+      <li>Used for both Digital and Physical Loyalty Card IDs.</li>
+    </ul>
+  </div>
 
   <script>
-    function generateLCN(first, middle, last) {
-      const year = new Date().getFullYear().toString().slice(2);
-      const cleaned = (str) => str.replace(/\s+/g, '');
-      return `${year}-JMBPS-${cleaned(first)},${cleaned(middle)},${cleaned(last)}-00000`;
-    }
-
-    const firstNameEl = document.getElementById('firstName');
-    const middleNameEl = document.getElementById('middleName');
-    const lastNameEl = document.getElementById('lastName');
-    const lcnDisplay = document.getElementById('lcnNumber');
+    const lastNameInput = document.getElementById('lastName');
+    const firstNameInput = document.getElementById('firstName');
+    const middleNameInput = document.getElementById('middleName');
+    const lcnOutput = document.getElementById('lcnOutput');
     const qr = new QRious({ element: document.getElementById('qrCode'), size: 150 });
 
-    function updateQRandLCN() {
-      const first = firstNameEl.value.trim();
-      const middle = middleNameEl.value.trim();
-      const last = lastNameEl.value.trim();
-      if (first && middle && last) {
-        const lcn = generateLCN(first, middle, last);
-        lcnDisplay.textContent = lcn;
-        qr.value = lcn;
+    function generateLCN() {
+      const last = lastNameInput.value.trim();
+      const first = firstNameInput.value.trim();
+      const middle = middleNameInput.value.trim();
+
+      if (!last || !first || !middle) {
+        lcnOutput.textContent = '--';
+        qr.value = '';
+        return;
       }
+
+      const year = new Date().getFullYear().toString().slice(-2);
+      const initials = (first[0] + middle[0] + last[0]).toUpperCase();
+      const number = "00001"; // Static ID for demo; replace with counter or database in production
+      const lcn = `${year}-JMBPS-${initials}-${number}`;
+
+      lcnOutput.textContent = lcn;
+      qr.value = lcn;
     }
 
-    firstNameEl.addEventListener('input', updateQRandLCN);
-    middleNameEl.addEventListener('input', updateQRandLCN);
-    lastNameEl.addEventListener('input', updateQRandLCN);
+    lastNameInput.addEventListener('input', generateLCN);
+    firstNameInput.addEventListener('input', generateLCN);
+    middleNameInput.addEventListener('input', generateLCN);
   </script>
 </body>
 </html>
