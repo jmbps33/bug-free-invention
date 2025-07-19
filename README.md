@@ -1,108 +1,61 @@
-# JMB Printing Services Website
+# JMB Printing Services - Online Viewer
 
-**Website Name:** JMB Printing Services  
-**Tagline:** High Quality Prints
+Welcome to the official web-based application for **JMB Printing Services**, a locally-owned print shop based in Calatagan, Batangas, Philippines. This project provides an online viewer interface for products, services, and business information.
 
-## 📍 Business Info
+## 🌐 Website Features
 
-- **Location:** Hi-way, Balitoc, Calatagan, Batangas, 4215  
-- **Facebook Page:** [Visit Here](https://web.facebook.com/profile.php?id=61577415907805)  
-- **Contact Number:** DITO SIM: 09931109148  
-- **Email Address:** jmbprintingservices12@gmail.com  
-- **Admin:** Jorenz Melo Balbuena  
-- **Admin Font:** Bucklane Script  
+- 📋 Product Catalog with Add-to-Cart and Checkout simulation
+- 🖼️ Admin Profile and Signature
+- 🎯 Mission & Vision
+- 📍 Embedded Google Map for Location
+- 📆 Simple Monthly Calendar
+- 📣 Facebook Timeline Embed
+- 📑 Business Registrations
+- 🖼️ Gallery Section
+- 📞 Contact Information
 
-## 🎯 Mission and Vision
+## 🛠 Technologies Used
 
-- **Mission:** Provide high-quality, affordable, and fast printing solutions for the community.
-- **Vision:** To become a leading local printing provider known for excellence and customer satisfaction.
+- **HTML5 & CSS3** - Responsive layout and styled UI
+- **JavaScript** - Product logic, time display, cart system, and calendar
+- **Google Fonts** - 'Bucklane Script' for styling
+- **Facebook Plugins** - For latest updates & announcements
 
-## 🖼️ Website Contents
+## 📸 Admin & Branding
 
-- **Header:**
-  - Logo
-  - Background Image
-  - Philippines Standard Time (PST)
-- **Footer:**
-  - Background Image
-  - Contact Info
-- **Body:**
-  - Background Image
-  - About Section (Mission/Vision)
-  - Admin Profile (Picture and Signature)
-  - Partners (GCash, BPI)
-  - Embedded Location Map
-  - Photo Gallery
-  - Business Permits (DTI, BIR, Barangay, Business Permit)
-  - Latest Activities (Facebook Integration)
-  - Custom Calendar (Non-Google)
-  - Holiday List (via Official Gazette)
-  - Product List with "Add to Cart" and "Checkout"
+- Admin: **Jorenz Melo Balbuena**
+- Location: Hi-way, Balitoc, Calatagan, Batangas, 4215
+- Contact: 0993-110-9148 | jmbprintingservices12@gmail.com
+- Facebook: [JMB Printing Services Page](https://web.facebook.com/profile.php?id=61577415907805)
 
-## 🛒 Product Price List
+## 📃 Business Registrations
 
-### 📇 ID Rush
-| Item         | Price |
-|--------------|-------|
-| ID RUSH 1    | ₱40   |
-| ID RUSH 2    | ₱50   |
-| ID RUSH 3    | ₱55   |
-| ID RUSH 4    | ₱55   |
-| ID RUSH 5    | ₱65   |
-| ID RUSH 6    | ₱65   |
-| ID RUSH 7    | ₱65   |
-| ID RUSH 8    | ₱65   |
+- DTI Registered
+- BIR Certified
+- Barangay Clearance
+- Local Business Permit
 
-### 🖼️ Photo Print
-| Item           | Price |
-|----------------|-------|
-| PHOTO PRINT 1  | ₱70   |
-| PHOTO PRINT 2  | ₱70   |
-| PHOTO PRINT 3  | ₱75   |
-| PHOTO PRINT 4  | ₱85   |
-| PHOTO PRINT 5  | ₱85   |
-| PHOTO PRINT 6  | ₱85   |
-| PHOTO PRINT 7  | ₱90   |
-| PHOTO PRINT 8  | ₱60   |
-| PHOTO PRINT 9  | ₱90   |
+## 💵 Payment Partners
 
-### 📄 Document Print & Other Services
-| Item                             | Price |
-|----------------------------------|-------|
-| A4 (Colored)                     | ₱7    |
-| A4 (B&W)                         | ₱6    |
-| Short (Colored)                 | ₱7    |
-| Short (B&W)                     | ₱6    |
-| Long (Colored)                  | ₱7    |
-| Long (B&W)                      | ₱6    |
-| Laminate                         | ₱35   |
-| Bookbinding                      | ₱100  |
-| Document Print (Full Page with Pic) | ₱20   |
-| Document Print (Half Page with Pic) | ₱15   |
+- GCash
+- BPI
 
-## 🛍️ E-Commerce Features
+## 🗺️ Map
 
-- **Add to Cart**
-- **View Cart**
-- **Checkout Button**
-- Basic Cart Storage via localStorage
+The location of JMB Printing Services is embedded via Google Maps:
+[View Map](https://maps.google.com/maps?q=Balitoc%20Calatagan&t=&z=13&ie=UTF8&iwloc=&output=embed)
 
-## 🗄️ Deployment Instructions
+## 🚀 How to Use
 
-1. Upload the `.zip` to your hosting panel (`htdocs` or `public_html`).
-2. Extract all files.
-3. Create a MySQL Database and import the provided `.sql` file.
-4. Configure your `db.php` file with correct database credentials.
-5. Open your website in browser.
+1. Clone or download this repository.
+2. Open the `.htm` file in any browser.
+3. Browse products, check announcements, and view business information.
 
-## ✅ Requirements
+## 📝 Notes
 
-- PHP 7.4+
-- MySQL/MariaDB
-- File Upload enabled
-- SMTP configured (optional for contact form or order confirmation)
-- Timezone set to Asia/Manila (PST)
+- Some images are referenced from local file paths (`C:\Users\Admin\...`) and will not render correctly unless adjusted.
+- Consider uploading all assets (images, logos, backgrounds) to your GitHub repo or a CDN to ensure full functionality online.
 
----
+## 📌 License
 
-© 2025 JMB Printing Services. All rights reserved.
+This project is for educational and portfolio use. All branding belongs to **JMB Printing Services**.
