@@ -1,30 +1,37 @@
+# JMB Printing Services Website
 
-# JMB Membership Form Package
+Welcome to the official website of **JMB Printing Services** — *High Quality Prints*. This site is a complete front-end project for a small printing business based in Calatagan, Batangas.
 
-This package includes all the necessary files to use the JMB Printing Services membership form locally or on a website.
+## 🏪 Business Information
 
-## Files Included
-- **jmb_membership_form.html** – The interactive membership form.
-- **Picture1.png** – Logo used in the header.
-- **README.txt** – This file.
+- **Business Name:** JMB Printing Services  
+- **Tagline:** High Quality Prints  
+- **Facebook Page:** [JMB Printing Services Facebook](https://web.facebook.com/profile.php?id=61577415907805)  
+- **Contact Number:** DITO SIM: 09931109148  
+- **Email:** jmbprintingservices12@gmail.com  
+- **Location:** Hi-way, Balitoc, Calatagan, Batangas, 4215  
+- **Admin:** Jorenz Melo Balbuena  
+- **Admin Font:** Bucklane Script  
+- **Admin Section Includes:** Profile Picture and Signature  
 
-## Features
-- Dynamic LCN Number generation (format: YY-JMBPS-FML-00001).
-- Auto-generated QR code based on the user’s name and LCN.
-- Upload fields for profile picture and signature.
-- Button to save the form as a PDF.
-- Instruction to email uploads to `jmbprintingservices12@gmail.com`.
+## 📷 Features
 
-## Usage
-1. Place all files in the same directory.
-2. Open `jmb_membership_form.html` in any web browser.
-3. Fill out the form. QR and LCN will be auto-generated.
-4. Upload your picture and signature.
-5. Click **"Save as PDF"** to download a filled version.
-6. Email your **picture** and **signature** to: `jmbprintingservices12@gmail.com`
+- ✅ Responsive design with header, body, and footer background images  
+- ✅ Embedded Google Maps location  
+- ✅ Real-time Philippine Standard Time (PST) in header  
+- ✅ Custom calendar with "Next" button (not Google Calendar)  
+- ✅ Holiday List (link to [Official Gazette](https://www.officialgazette.gov.ph/nationwide-holidays/2025/))  
+- ✅ Price List with "Add to Cart", "View Cart", and "Checkout" functionality  
+- ✅ Partners: GCash and BPI  
+- ✅ Business permits section: DTI, BIR, Barangay Permit, Business Permit  
+- ✅ Live Facebook feed for announcements  
+- ✅ Gallery for project photos  
 
-## Notes
-- Internet connection is required to generate the QR code.
-- This form works offline after the QR is generated.
+## 🛒 Products and Pricing
 
-— JMB Printing Services
+| Product                        | Price |
+|-------------------------------|-------|
+| ID RUSH 1                     | ₱40   |
+| ID RUSH 2                     | ₱50   |
+| ID RUSH 3–4                   | ₱55   |
+| ID RUSH 5–8
