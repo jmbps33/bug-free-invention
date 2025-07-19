@@ -1,128 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>JMB Loyalty ID Generator</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JMB Printing Services</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bucklane+Script&display=swap">
   <style>
     body {
+      background-image: url('—Pngtree—background biru keren dan kosong_1738466 (2).png');
+      background-size: cover;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      color: #fff;
+    }
+    header, footer {
+      background-image: url('—Pngtree—background biru keren dan kosong_1738466 (2).png');
+      background-size: cover;
       text-align: center;
-      padding: 30px;
-    }
-
-    .logo {
-      width: 180px;
-    }
-
-    .form-container {
-      background: #ffffff;
       padding: 20px;
-      max-width: 500px;
-      margin: auto;
+    }
+    footer {
+      background-image: url('footer-bg.jpg');
+    }
+    .admin-name {
+      font-family: 'Bucklane Script', cursive;
+      font-size: 24px;
+    }
+    .product {
+      background-color: rgba(0, 0, 0, 0.6);
+      margin: 10px;
+      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    input[type="text"] {
-      width: 85%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+    .btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
     }
-
-    .output-box {
+    .cart {
       margin-top: 20px;
     }
-
-    canvas {
-      margin-top: 15px;
-    }
-
-    .version {
-      margin-top: 30px;
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    .readme {
-      margin-top: 30px;
-      background: #fff7d6;
-      border-left: 4px solid #f4c400;
-      padding: 15px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    iframe {
+      border: none;
+      width: 100%;
+      height: 300px;
     }
   </style>
 </head>
 <body>
-  <!-- Logo Header -->
-  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABGYAAARpCAYAAACMHwEmAAEAAElEQVR4nOzdeWBU1dnH8e85d7InEA" class="logo" alt="JMB Logo" />
-  <h2>JMB PRINTING SERVICES</h2>
-  <p><strong>High Quality Prints</strong></p>
+  <header>
+    <img src="Colorful_Printing_and_Digital_Shop_Logo__1_-removebg-preview.png" alt="Logo" width="100"><br><img src="Picture1.png" alt="Logo" width="100"><br>
+    <h1>JMB Printing Services</h1>
+    <p>High quality prints</p>
+    <p>Philippine Standard Time: <span id="pst"></span></p>
+  </header>
 
-  <!-- Form -->
-  <div class="form-container">
-    <h3>Loyalty Card ID Generator</h3>
-    <input type="text" id="lastName" placeholder="Last Name" />
-    <input type="text" id="firstName" placeholder="Given Name" />
-    <input type="text" id="middleName" placeholder="Middle Name" />
-    
-    <div class="output-box">
-      <p><strong>LCN Number:</strong></p>
-      <p id="lcnOutput">--</p>
-      <canvas id="qrCode"></canvas>
-    </div>
-  </div>
+  <section>
+    <h2>Admin</h2>
+    <img src="E:\BACGROUND/481255701_648324757779871_3101788441027244398_n.jpg" alt="Admin" width="100">
+    <p class="admin-name">Jorenz Melo Balbuena</p>
+    <img src="signature.png" alt="Signature" width="150">
+  </section>
 
-  <div class="version">Updated Version: 1.0.1 — July 2025</div>
+  <section>
+    <h2>Mission and Vision</h2>
+    <p><strong>Mission:</strong> To deliver high-quality and affordable printing solutions for every Filipino.</p>
+    <p><strong>Vision:</strong> To be a trusted and leading name in the printing industry across the Philippines.</p>
+  </section>
 
-  <!-- ReadMe -->
-  <div class="readme">
-    <h4>README</h4>
+  <section>
+    <h2>Contact</h2>
+    <p>Facebook: <a href="https://web.facebook.com/profile.php?id=61577415907805">Visit our page</a></p>
+    <p>Contact: DITO SIM: 09931109148</p>
+    <p>Email: jmbprintingservices12@gmail.com</p>
+    <p>Location: Hi-way, Balitoc, Calatagan, Batangas, 4215</p>
+  </section>
+
+  <section>
+    <h2>Partners</h2>
+    <p>GCash | BPI</p>
+  </section>
+
+  <section>
+    <h2>Gallery</h2>
+    <img src="gallery1.jpg" width="150">
+    <img src="gallery2.jpg" width="150">
+    <!-- Add more images as needed -->
+  </section>
+
+  <section>
+    <h2>Business Registration</h2>
     <ul>
-      <li>Input LAST NAME, GIVEN NAME, and MIDDLE NAME to generate LCN and QR.</li>
-      <li><strong>LCN Format:</strong> <code>YY-JMBPS-[FML]-00001</code></li>
-      <li>FML = First letters of Given, Middle, Last Names</li>
-      <li>QR Code is auto-generated based on the LCN number.</li>
-      <li>Used for both Digital and Physical Loyalty Card IDs.</li>
+      <li>DTI</li>
+      <li>BIR</li>
+      <li>Barangay Permit</li>
+      <li>Business Permit</li>
     </ul>
-  </div>
+  </section>
+
+  <section>
+    <h2>Location Map</h2>
+    <iframe src="https://maps.google.com/maps?q=Balitoc%20Calatagan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  </section>
+
+  <section>
+    <h2>Products</h2>
+    <div id="product-list"></div>
+    <div class="cart">
+      <button class="btn" onclick="viewCart()">View Cart</button>
+      <button class="btn" onclick="checkout()">Checkout</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Calendar</h2>
+    <div id="calendar"></div>
+    <button onclick="nextMonth()">Next Month</button>
+  </section>
+
+  <section>
+    <h2>Latest Activities & Announcements</h2>
+    <iframe src="https://web.facebook.com/plugins/page.php?href=https://web.facebook.com/profile.php?id=61577415907805&tabs=timeline&width=500&height=300"></iframe>
+  </section>
+
+  <section>
+    <h2>Holiday List</h2>
+    <p>See: <a href="https://www.officialgazette.gov.ph/nationwide-holidays/2025/">Official Gazette Holiday List</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 JMB Printing Services. All Rights Reserved.</p>
+  </footer>
 
   <script>
-    const lastNameInput = document.getElementById('lastName');
-    const firstNameInput = document.getElementById('firstName');
-    const middleNameInput = document.getElementById('middleName');
-    const lcnOutput = document.getElementById('lcnOutput');
-    const qr = new QRious({ element: document.getElementById('qrCode'), size: 150 });
+    const products = [
+      ['ID RUSH 1', 40], ['ID RUSH 2', 50], ['ID RUSH 3', 55], ['ID RUSH 4', 55],
+      ['ID RUSH 5', 65], ['ID RUSH 6', 65], ['ID RUSH 7', 65], ['ID RUSH 8', 65],
+      ['PHOTO PRINT 1', 70], ['PHOTO PRINT 2', 70], ['PHOTO PRINT 3', 75], ['PHOTO PRINT 4', 85],
+      ['PHOTO PRINT 5', 85], ['PHOTO PRINT 6', 85], ['PHOTO PRINT 7', 90], ['PHOTO PRINT 8', 60],
+      ['PHOTO PRINT 9', 90], ['A4(COLORED)', 7], ['A4(B&W)', 6], ['SHORT(COLORED)', 7],
+      ['SHORT(B&W)', 6], ['LONG(COLORED)', 7], ['LONG(B&W)', 6], ['LAMINATE', 35],
+      ['BOOKBINDING', 100], ['DOCUMENT PRINT (Full Page w/ PIC)', 20], ['DOCUMENT PRINT (Half Page w/ PIC)', 15]
+    ];
 
-    function generateLCN() {
-      const last = lastNameInput.value.trim();
-      const first = firstNameInput.value.trim();
-      const middle = middleNameInput.value.trim();
+    let cart = [];
 
-      if (!last || !first || !middle) {
-        lcnOutput.textContent = '--';
-        qr.value = '';
-        return;
-      }
-
-      const year = new Date().getFullYear().toString().slice(-2);
-      const initials = (first[0] + middle[0] + last[0]).toUpperCase();
-      const number = "00001"; // Static ID for demo; replace with counter or database in production
-      const lcn = `${year}-JMBPS-${initials}-${number}`;
-
-      lcnOutput.textContent = lcn;
-      qr.value = lcn;
+    function renderProducts() {
+      const list = document.getElementById('product-list');
+      products.forEach(([name, price], index) => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <strong>${name}</strong><br>
+          Price: ₱${price}<br>
+          <button class="btn" onclick="addToCart(${index})">Add to Cart</button>
+        `;
+        list.appendChild(div);
+      });
     }
 
-    lastNameInput.addEventListener('input', generateLCN);
-    firstNameInput.addEventListener('input', generateLCN);
-    middleNameInput.addEventListener('input', generateLCN);
+    function addToCart(index) {
+      cart.push(products[index]);
+      alert(products[index][0] + ' added to cart.');
+    }
+
+    function viewCart() {
+      alert(cart.map(([name, price]) => `${name}: ₱${price}`).join('\n'));
+    }
+
+    function checkout() {
+      const total = cart.reduce((sum, item) => sum + item[1], 0);
+      alert('Checkout total: ₱' + total);
+    }
+
+    function updateTime() {
+      const pstDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+      document.getElementById('pst').textContent = pstDate;
+    }
+
+    setInterval(updateTime, 1000);
+    renderProducts();
+
+    // Basic Calendar (simple month display)
+    let currentMonth = new Date().getMonth();
+    function renderCalendar() {
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      document.getElementById('calendar').textContent = months[currentMonth];
+    }
+    function nextMonth() {
+      currentMonth = (currentMonth + 1) % 12;
+      renderCalendar();
+    }
+    renderCalendar();
   </script>
 </body>
 </html>
