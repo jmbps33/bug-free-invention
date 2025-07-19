@@ -1,37 +1,36 @@
-# JMB Printing Services Website
+JMB PRINTING SERVICES - Website System
+---------------------------------------
 
-Welcome to the official website of **JMB Printing Services** — *High Quality Prints*. This site is a complete front-end project for a small printing business based in Calatagan, Batangas.
+📌 Admin Panel
+  - URL: yourdomain.com/admin/login.php
+  - Username: admin
+  - Password: admin123
 
-## 🏪 Business Information
+📌 Technologies Used:
+  - HTML, CSS, JavaScript
+  - PHP (Backend)
+  - MySQL (Database)
+  - PHPMailer (Email, optional)
+  - iTexMo SMS API (optional)
 
-- **Business Name:** JMB Printing Services  
-- **Tagline:** High Quality Prints  
-- **Facebook Page:** [JMB Printing Services Facebook](https://web.facebook.com/profile.php?id=61577415907805)  
-- **Contact Number:** DITO SIM: 09931109148  
-- **Email:** jmbprintingservices12@gmail.com  
-- **Location:** Hi-way, Balitoc, Calatagan, Batangas, 4215  
-- **Admin:** Jorenz Melo Balbuena  
-- **Admin Font:** Bucklane Script  
-- **Admin Section Includes:** Profile Picture and Signature  
+📌 Features:
+  - Product list with "Add to Cart"
+  - Cart + Checkout system
+  - Admin panel to view/export orders
+  - Philippine Standard Time display
+  - Custom Calendar with holidays
+  - Partner logos, FB embed, gallery, registration info
 
-## 📷 Features
+📌 Setup Steps:
+  1. Import `jmb.sql` to your MySQL database
+  2. Update `db.php` with your database credentials
+  3. Upload to InfinityFree/000WebHost
+  4. Set file permissions (uploads/, if needed)
 
-- ✅ Responsive design with header, body, and footer background images  
-- ✅ Embedded Google Maps location  
-- ✅ Real-time Philippine Standard Time (PST) in header  
-- ✅ Custom calendar with "Next" button (not Google Calendar)  
-- ✅ Holiday List (link to [Official Gazette](https://www.officialgazette.gov.ph/nationwide-holidays/2025/))  
-- ✅ Price List with "Add to Cart", "View Cart", and "Checkout" functionality  
-- ✅ Partners: GCash and BPI  
-- ✅ Business permits section: DTI, BIR, Barangay Permit, Business Permit  
-- ✅ Live Facebook feed for announcements  
-- ✅ Gallery for project photos  
+📌 Optional:
+  - Configure PHPMailer in `send-confirmation.php`
+  - Get iTexMo API code and add to `send-sms.php`
 
-## 🛒 Products and Pricing
-
-| Product                        | Price |
-|-------------------------------|-------|
-| ID RUSH 1                     | ₱40   |
-| ID RUSH 2                     | ₱50   |
-| ID RUSH 3–4                   | ₱55   |
-| ID RUSH 5–8
+🔒 For Security:
+  - Change admin login password after setup
+  - Use CAPTCHA for checkout (optional)
