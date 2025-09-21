@@ -1,199 +1,921 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JMB Printing Services</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bucklane+Script&display=swap">
+  <meta charset="UTF-8" />
+  <title>P1SO PR1NT PROMO — Student Registration + Official JMB Claim Stub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans','sans-serif'],
+          },
+          boxShadow: {
+            glow: '0 20px 45px -15px rgba(0,0,0,0.45), 0 6px 18px rgba(0,0,0,0.15)',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body {
-      background-image: url('E:\OJT ezf solar farm/OJT 5.jpg');
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      color: #fff;
+    /* Print only the stub */
+    @media print {
+      body { background: #ffffff !important; }
+      #app, #termsModal, #privacyModal, #adminModal, #verifyModal { display: none !important; }
+      #stubPrintWrap { display: block !important; }
     }
-    header, footer {
-      background-image: url('—Pngtree—background biru keren dan kosong_1738466 (2).png');
-      background-size: cover;
-      text-align: center;
-      padding: 20px;
+    /* Signature scribble */
+    .sig-stroke {
+      stroke: #0ea5e9;
+      stroke-width: 2.25;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-    footer {
-      background-image: url('—Pngtree—background biru keren dan kosong_1738466 (2).png');
-    }
-    .admin-name {
-      font-family: 'Bucklane Script', cursive;
-      font-size: 24px;
-    }
-    .product {
-      background-color: rgba(0, 0, 0, 0.6);
-      margin: 10px;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .btn {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .cart {
-      margin-top: 20px;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 300px;
+    /* Soft texture for cards */
+    .card-surface {
+      background:
+        radial-gradient(1200px 600px at -10% -20%, rgba(255,255,255,0.25), rgba(255,255,255,0)),
+        radial-gradient(900px 700px at 110% 120%, rgba(255,255,255,0.25), rgba(255,255,255,0));
+      backdrop-filter: blur(6px);
     }
   </style>
 </head>
-<body>
-  <header>
-    <img src="Colorful_Printing_and_Digital_Shop_Logo__1_-removebg-preview.png" alt="Logo" width="100"><br><img src="C:\Users\Admin\Pictures/Picture1.png" alt="Logo" width="100"><br>
-    <h1>JMB Printing Services</h1>
-    <p>High quality prints</p>
-    <p>Philippine Standard Time: <span id="pst"></span></p>
-  </header>
+<body class="min-h-screen bg-gradient-to-br from-fuchsia-600 via-indigo-600 to-cyan-500 font-display text-slate-800 antialiased">
+  <main id="app" class="max-w-6xl mx-auto p-6 md:p-10">
+    <header class="mb-8 text-white">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold drop-shadow">P1SO PR1NT PROMO — Student Registration</h1>
+          <p class="opacity-90 mt-1">For JHS (Grade 7–10), SHS (Grade 11–12), and College (1st–4th Year)</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="openVerify" type="button" class="text-sm bg-white/20 hover:bg-white/30 text-white px-3 py-2 rounded-lg ring-1 ring-white/25">
+            Verify QR
+          </button>
+          <button id="openAdmin" type="button" class="text-sm bg-white/20 hover:bg-white/30 text-white px-3 py-2 rounded-lg ring-1 ring-white/25">
+            Admin Portal
+          </button>
+        </div>
+      </div>
+    </header>
 
-  <section>
-    <h2>Admin</h2>
-    <img src="E:\BACGROUND/481255701_648324757779871_3101788441027244398_n.jpg" alt="Admin" width="100">
-    <p class="admin-name">Jorenz Melo Balbuena</p>
-    <img src="signature.png" alt="Signature" width="150">
-  </section>
+    <section class="grid lg:grid-cols-2 gap-6">
+      <!-- Registration Card -->
+      <div class="card-surface rounded-2xl shadow-glow p-1">
+        <div class="rounded-2xl bg-white/95 p-6 md:p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <span class="grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 text-white shadow">🖨️</span>
+              <div>
+                <h2 class="text-xl font-bold">Student Registration</h2>
+                <p class="text-slate-500 text-sm">Fill out the details to generate your claim stub</p>
+              </div>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-slate-100 text-slate-600">Step 1 of 1</span>
+          </div>
 
-  <section>
-    <h2>Mission and Vision</h2>
-    <p><strong>Mission:</strong> To deliver high-quality and affordable printing solutions for every Filipino.</p>
-    <p><strong>Vision:</strong> To be a trusted and leading name in the printing industry across the Philippines.</p>
-  </section>
+          <form id="regForm" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Full Name<span class="text-rose-500">*</span></label>
+                <input id="fullName" type="text" required class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="Juan Dela Cruz" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Student ID (optional)</label>
+                <input id="studentId" type="text" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="e.g., 2025-12345" />
+              </div>
+            </div>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Facebook: <a href="https://web.facebook.com/profile.php?id=61577415907805">Visit our page</a></p>
-    <p>Contact: DITO SIM: 09931109148</p>
-    <p>Email: jmbprintingservices12@gmail.com</p>
-    <p>Location: Hi-way, Balitoc, Calatagan, Batangas, 4215</p>
-  </section>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">School / Campus<span class="text-rose-500">*</span></label>
+                <input id="school" type="text" required class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="Your School Name" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Email<span class="text-rose-500">*</span></label>
+                <input id="email" type="email" required class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="you@example.com" />
+              </div>
+            </div>
 
-  <section>
-    <h2>Partners</h2>
-    <p>GCash | BPI</p>
-  </section>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Contact Number (optional)</label>
+                <input id="phone" type="tel" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="09xx xxx xxxx" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Education Level<span class="text-rose-500">*</span></label>
+                <select id="level" required class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white">
+                  <option value="" disabled selected>Select level</option>
+                  <option value="JHS">JHS — Grade 7–10</option>
+                  <option value="SHS">SHS — Grade 11–12</option>
+                  <option value="College">College — 1st–4th Year</option>
+                </select>
+              </div>
+            </div>
 
-  <section>
-    <h2>Gallery</h2>
-    <img src="gallery1.jpg" width="150">
-    <img src="gallery2.jpg" width="150">
-    <!-- Add more images as needed -->
-  </section>
+            <!-- JHS -->
+            <div id="groupJHS" class="hidden">
+              <label class="block text-sm font-medium text-slate-700 mb-1">Grade<span class="text-rose-500">*</span></label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <label class="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2 cursor-pointer">
+                  <input type="radio" name="jhGrade" value="Grade 7" class="accent-indigo-600" />
+                  <span>Grade 7</span>
+                </label>
+                <label class="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2 cursor-pointer">
+                  <input type="radio" name="jhGrade" value="Grade 8" class="accent-indigo-600" />
+                  <span>Grade 8</span>
+                </label>
+                <label class="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2 cursor-pointer">
+                  <input type="radio" name="jhGrade" value="Grade 9" class="accent-indigo-600" />
+                  <span>Grade 9</span>
+                </label>
+                <label class="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2 cursor-pointer">
+                  <input type="radio" name="jhGrade" value="Grade 10" class="accent-indigo-600" />
+                  <span>Grade 10</span>
+                </label>
+              </div>
+            </div>
 
-  <section>
-    <h2>Business Registration</h2>
-    <ul>
-      <li>DTI</li>
-      <li>BIR</li>
-      <li>Barangay Permit</li>
-      <li>Business Permit</li>
-    </ul>
-  </section>
+            <!-- SHS -->
+            <div id="groupSHS" class="hidden">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Grade<span class="text-rose-500">*</span></label>
+                  <select id="shsGrade" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white">
+                    <option value="" disabled selected>Select</option>
+                    <option>Grade 11</option>
+                    <option>Grade 12</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Track / Strand (optional)</label>
+                  <select id="shsStrand" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white">
+                    <option value="" selected>Not specified</option>
+                    <option>STEM</option>
+                    <option>ABM</option>
+                    <option>HUMSS</option>
+                    <option>GAS</option>
+                    <option>TVL</option>
+                    <option>Arts & Design</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-  <section>
-    <h2>Location Map</h2>
-    <iframe src="https://maps.google.com/maps?q=Balitoc%20Calatagan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-  </section>
+            <!-- College -->
+            <div id="groupCollege" class="hidden">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Year Level<span class="text-rose-500">*</span></label>
+                  <select id="collegeYear" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white">
+                    <option value="" disabled selected>Select</option>
+                    <option>1st Year</option>
+                    <option>2nd Year</option>
+                    <option>3rd Year</option>
+                    <option>4th Year</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-slate-700 mb-1">Course / Program (optional)</label>
+                  <input id="collegeCourse" type="text" class="w-full rounded-xl border-slate-300 focus:border-indigo-500 focus:ring-indigo-500 px-4 py-2.5 bg-white" placeholder="e.g., BSIT" />
+                </div>
+              </div>
+            </div>
 
-  <section>
-    <h2>Products</h2>
-    <div id="product-list"></div>
-    <div class="cart">
-      <button class="btn" onclick="viewCart()">View Cart</button>
-      <button class="btn" onclick="checkout()">Checkout</button>
+            <div class="pt-1">
+              <label class="flex items-start gap-3 text-sm">
+                <input id="agree" type="checkbox" class="mt-1 accent-indigo-600" />
+                <span>
+                  I have read and agree to the
+                  <button type="button" id="openTerms" class="text-indigo-600 underline hover:text-indigo-700">Terms & Conditions</button>
+                  and
+                  <button type="button" id="openPrivacy" class="text-indigo-600 underline hover:text-indigo-700">Privacy Policy</button>.
+                </span>
+              </label>
+              <p id="agreeError" class="text-rose-600 text-xs mt-2 hidden">You must agree before submitting.</p>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <button type="submit" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl shadow focus:outline-none focus:ring-4 focus:ring-indigo-300 transition">
+                <span>Submit Registration</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <button type="button" id="resetBtn" class="inline-flex items-center gap-2 bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 px-4 py-2.5 rounded-xl transition">
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Claim Stub Card -->
+      <div class="card-surface rounded-2xl shadow-glow p-1">
+        <div class="rounded-2xl bg-white/95 p-6 md:p-8 h-full flex flex-col">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <span class="grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white shadow">🎟️</span>
+              <div>
+                <h2 class="text-xl font-bold">Claim Stub</h2>
+                <p class="text-slate-500 text-sm">Auto-generated after successful registration</p>
+              </div>
+            </div>
+            <span id="stubStatus" class="text-xs px-3 py-1 rounded-full bg-amber-100 text-amber-700">Not generated</span>
+          </div>
+
+          <!-- Empty state -->
+          <div id="stubEmpty" class="flex-1 grid place-items-center text-center text-slate-500">
+            <div class="max-w-sm">
+              <div class="text-5xl">🧾</div>
+              <p class="mt-3">Your claim stub will appear here after you submit.</p>
+            </div>
+          </div>
+
+          <!-- Stub Content -->
+          <div id="stubCard" class="hidden">
+            <div class="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+              <!-- JMB Brand Header -->
+              <div class="p-5 border-b border-slate-200 bg-gradient-to-r from-cyan-50 to-indigo-50">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-xs tracking-wider text-slate-600">JMB PRINTING SERVICES</p>
+                    <p class="text-[11px] text-slate-500">High Quality Prints • Brgy. Highway, Balitoc, Calatagan, Batangas</p>
+                    <h3 class="text-lg font-bold tracking-wide mt-1">This is the OFFICIAL STUB for P1SO PR1NT</h3>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-[11px] uppercase tracking-widest text-slate-500">Claim Stub No.</p>
+                    <p id="stubCode" class="font-mono text-sm mt-0.5 font-semibold text-slate-800 select-all">—</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-xs text-slate-500">Surname</p>
+                    <p id="stubSurname" class="font-medium">—</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500">Given Name</p>
+                    <p id="stubGiven" class="font-medium">—</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500">Contact Number</p>
+                    <p id="stubContact" class="font-medium">—</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500">Education</p>
+                    <p id="stubLevel" class="font-medium">—</p>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <p class="text-xs text-slate-500">School</p>
+                    <p id="stubSchool" class="font-medium">—</p>
+                  </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                    <p class="text-xs text-slate-500">Validity</p>
+                    <p id="stubValid" class="font-semibold">NOVEMBER 13, 2026</p>
+                    <p id="stubDate" class="text-[11px] text-slate-500 mt-1"></p>
+                  </div>
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <p class="text-xs text-slate-500 mb-2">Scan to verify</p>
+                    <div id="stubQR" class="w-36 h-36 mx-auto"></div>
+                    <div class="flex items-center justify-between mt-3">
+                      <button id="showQRData" class="text-xs text-indigo-600 hover:text-indigo-700 underline">Show QR data</button>
+                      <button id="copyQRData" class="text-xs bg-slate-900 text-white px-2.5 py-1 rounded-lg hover:bg-black">Copy</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-t border-slate-200 pt-4">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-xs text-slate-600">
+                      <p>Present this official stub at the counter to redeem your P1SO PR1NT.</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Admin Signature</p>
+                      <div class="bg-white rounded-xl border border-slate-200 px-3 py-2">
+                        <svg viewBox="0 0 220 60" class="w-48 h-14">
+                          <path class="sig-stroke" d="M10 32 q20 -22 40 0 t40 0 t40 0 q20 22 40 0" />
+                          <path class="sig-stroke" d="M18 42 q12 -10 22 0 t22 0 t22 0 t22 0" />
+                        </svg>
+                        <p id="sigName" class="text-xs text-slate-700 text-right">Jorenz M. Balbuena • Admin</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-5 py-4 bg-gradient-to-r from-indigo-50 to-cyan-50 border-t border-slate-200 flex flex-wrap items-center gap-3">
+                <button id="copyCodeBtn" class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-black transition">
+                  <span>Copy Claim Stub No.</span>
+                </button>
+                <button id="printBtn" class="inline-flex items-center gap-2 bg-white text-slate-700 ring-1 ring-slate-200 px-4 py-2 rounded-lg hover:bg-slate-50 transition">
+                  Print / Save
+                </button>
+                <button id="newRegBtn" class="ml-auto inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                  New Registration
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Print-only wrapper -->
+  <div id="stubPrintWrap" class="hidden p-6">
+    <div class="max-w-xl mx-auto">
+      <div class="rounded-2xl border border-slate-300 overflow-hidden">
+        <div class="p-5 border-b border-slate-200 bg-slate-50">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="text-xs tracking-wider text-slate-700">JMB PRINTING SERVICES</p>
+              <p class="text-[11px] text-slate-600">High Quality Prints • Brgy. Highway, Balitoc, Calatagan, Batangas</p>
+              <h3 class="text-lg font-bold mt-1">This is the OFFICIAL STUB for P1SO PR1NT</h3>
+              <p id="pDate" class="text-xs text-slate-600 mt-1"></p>
+            </div>
+            <div class="text-right">
+              <p class="text-[11px] uppercase tracking-widest text-slate-500">Claim Stub No.</p>
+              <p id="pCode" class="font-mono text-sm mt-0.5 font-semibold text-slate-800">—</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div><span class="text-slate-500">Surname:</span> <span id="pSurname" class="font-medium"></span></div>
+            <div><span class="text-slate-500">Given Name:</span> <span id="pGiven" class="font-medium"></span></div>
+            <div><span class="text-slate-500">Contact Number:</span> <span id="pContact" class="font-medium"></span></div>
+            <div><span class="text-slate-500">Education:</span> <span id="pLevel" class="font-medium"></span></div>
+            <div class="col-span-2"><span class="text-slate-500">School:</span> <span id="pSchool" class="font-medium"></span></div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-lg bg-slate-50 border border-slate-200 p-3 text-sm">
+              <p><span class="text-slate-500">Validity:</span> <span id="pValid" class="font-semibold">NOVEMBER 13, 2026</span></p>
+            </div>
+            <div class="rounded-lg border border-slate-200 p-3">
+              <p class="text-xs text-slate-500 mb-2">Scan to verify</p>
+              <div id="pQR" class="w-32 h-32"></div>
+            </div>
+          </div>
+
+          <div class="pt-2 grid grid-cols-2 gap-3 items-end">
+            <div class="text-[11px] text-slate-600">
+              Present this official stub at the counter to redeem your P1SO PR1NT.
+            </div>
+            <div class="justify-self-end">
+              <p class="text-[11px] uppercase tracking-widest text-slate-500 mb-2">Admin Signature</p>
+              <div class="border border-slate-300 rounded-md p-2">
+                <svg viewBox="0 0 220 60" class="w-44 h-12">
+                  <path class="sig-stroke" d="M10 32 q20 -22 40 0 t40 0 t40 0 q20 22 40 0" />
+                  <path class="sig-stroke" d="M18 42 q12 -10 22 0 t22 0 t22 0 t22 0" />
+                </svg>
+                <p class="text-xs text-right text-slate-700">Jorenz M. Balbuena • Admin</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-1">
+            <p class="text-[10px] italic text-slate-400">Watermark: P1SO PR1NT • Official Stub (JMB PRINTING SERVICES)</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <h2>Calendar</h2>
-    <div id="calendar"></div>
-    <button onclick="nextMonth()">Next Month</button>
-  </section>
+  <!-- Admin Portal Modal -->
+  <div id="adminModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="w-full max-w-5xl rounded-2xl bg-white shadow-xl overflow-hidden">
+      <div class="px-6 py-4 border-b flex items-center justify-between">
+        <h3 class="text-lg font-bold">Admin Portal</h3>
+        <button data-close="admin" class="text-slate-500 hover:text-slate-700">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-sm leading-relaxed text-slate-700">
+        <div class="flex flex-col md:flex-row md:items-end gap-4">
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-slate-700 mb-1">Search by Name / Code</label>
+            <input id="adminSearch" type="text" class="w-full rounded-xl border-slate-300 px-4 py-2.5" placeholder="e.g., Juan or P1SO-20250101-AB12" />
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="adminSearchBtn" class="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-black">Search</button>
+            <button id="adminRefreshBtn" class="bg-white ring-1 ring-slate-200 px-4 py-2 rounded-lg hover:bg-slate-50">Refresh</button>
+          </div>
+        </div>
 
-  <section>
-    <h2>Latest Activities & Announcements</h2>
-    <iframe src="https://web.facebook.com/plugins/page.php?href=https://web.facebook.com/profile.php?id=61577415907805&tabs=timeline&width=500&height=300"></iframe>
-  </section>
+        <div class="mt-3 overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr class="text-left text-slate-500">
+                <th class="py-2 pr-4">Claim Stub No.</th>
+                <th class="py-2 pr-4">Name</th>
+                <th class="py-2 pr-4">Education</th>
+                <th class="py-2 pr-4">School</th>
+                <th class="py-2 pr-4">Issued</th>
+                <th class="py-2 pr-4">Validity</th>
+                <th class="py-2 pr-4">Status</th>
+                <th class="py-2 pr-4">Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminTable" class="align-top"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t flex justify-end">
+        <button data-close="admin" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Close</button>
+      </div>
+    </div>
+  </div>
 
-  <section>
-    <h2>Holiday List</h2>
-    <p>See: <a href="https://www.officialgazette.gov.ph/nationwide-holidays/2025/">Official Gazette Holiday List</a></p>
-  </section>
+  <!-- Verify QR Modal -->
+  <div id="verifyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4 z-[60]">
+    <div class="w-full max-w-xl rounded-2xl bg-white shadow-xl overflow-hidden">
+      <div class="px-6 py-4 border-b flex items-center justify-between">
+        <h3 class="text-lg font-bold">Verify Registration (QR Data)</h3>
+        <button data-close="verify" class="text-slate-500 hover:text-slate-700">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-sm">
+        <p class="text-slate-600">Paste the scanned QR data below to view the encoded details.</p>
+        <textarea id="verifyInput" class="w-full h-28 rounded-lg border-slate-300 px-3 py-2" placeholder="Paste QR data here..."></textarea>
+        <div class="flex items-center gap-2">
+          <button id="verifyBtn" class="bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-black">Verify</button>
+          <button id="verifyClear" class="bg-white ring-1 ring-slate-200 px-4 py-2 rounded-lg hover:bg-slate-50">Clear</button>
+        </div>
+        <div id="verifyResult" class="hidden mt-3 rounded-xl border p-4"></div>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t flex justify-end">
+        <button data-close="verify" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Close</button>
+      </div>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 JMB Printing Services. All Rights Reserved.</p>
-  </footer>
+  <!-- Terms Modal -->
+  <div id="termsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4 z-40">
+    <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl overflow-hidden">
+      <div class="px-6 py-4 border-b flex items-center justify-between">
+        <h3 class="text-lg font-bold">Terms & Conditions</h3>
+        <button data-close="terms" class="text-slate-500 hover:text-slate-700">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-sm leading-relaxed text-slate-700">
+        <p>By participating in the P1SO PR1NT PROMO, you agree to:</p>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Eligibility: For currently enrolled students in JHS (Grades 7–10), SHS (Grades 11–12), or College (1st–4th Year).</li>
+          <li>One-time use: Each claim stub is valid for a single redemption and cannot be shared or duplicated.</li>
+          <li>Identification: A valid school ID or proof of enrollment may be required upon redemption.</li>
+          <li>Validity: Stubs are honored only until the printed validity date.</li>
+          <li>Fair use: Promo cannot be combined with other offers. Terms may change without prior notice.</li>
+        </ul>
+        <p class="text-xs text-slate-500">No payments are processed on this page.</p>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t flex justify-end">
+        <button data-close="terms" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div id="privacyModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4 z-40">
+    <div class="w-full max-w-2xl rounded-2xl bg-white shadow-xl overflow-hidden">
+      <div class="px-6 py-4 border-b flex items-center justify-between">
+        <h3 class="text-lg font-bold">Privacy Policy</h3>
+        <button data-close="privacy" class="text-slate-500 hover:text-slate-700">✕</button>
+      </div>
+      <div class="p-6 space-y-4 text-sm leading-relaxed text-slate-700">
+        <p>We only use the information you provide to generate your claim stub.</p>
+        <ul class="list-disc ml-5 space-y-2">
+          <li>Collected: Name, school, contact, and level for eligibility.</li>
+          <li>Storage: Data stays in your browser during this session and is not sent to a server.</li>
+          <li>Security: Do not enter sensitive details (passwords, government IDs, or payment info).</li>
+          <li>Your control: Close this page to clear your data.</li>
+        </ul>
+        <p class="text-xs text-slate-500">For official inquiries, contact JMB PRINTING SERVICES.</p>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t flex justify-end">
+        <button data-close="privacy" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Close</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const products = [
-      ['ID RUSH 1', 40], ['ID RUSH 2', 50], ['ID RUSH 3', 55], ['ID RUSH 4', 55],
-      ['ID RUSH 5', 65], ['ID RUSH 6', 65], ['ID RUSH 7', 65], ['ID RUSH 8', 65],
-      ['PHOTO PRINT 1', 70], ['PHOTO PRINT 2', 70], ['PHOTO PRINT 3', 75], ['PHOTO PRINT 4', 85],
-      ['PHOTO PRINT 5', 85], ['PHOTO PRINT 6', 85], ['PHOTO PRINT 7', 90], ['PHOTO PRINT 8', 60],
-      ['PHOTO PRINT 9', 90], ['A4(COLORED)', 7], ['A4(B&W)', 6], ['SHORT(COLORED)', 7],
-      ['SHORT(B&W)', 6], ['LONG(COLORED)', 7], ['LONG(B&W)', 6], ['LAMINATE', 35],
-      ['BOOKBINDING', 100], ['DOCUMENT PRINT (Full Page w/ PIC)', 20], ['DOCUMENT PRINT (Half Page w/ PIC)', 15]
-    ];
+    // Minimal inline QRCode.js (Canvas) - source adapted from popular QRCode library
+    // Reduced build, enough for typical content lengths here.
+    // BEGIN QR LIB
+    /*! QRCode for JavaScript - MIT License (minified, trimmed) */
+    (function(q){function p(a,b){this._oQRCode=null;this._oDrawing=null;this._htOption={width:256,height:256,typeNumber:4,colorDark:"#000000",colorLight:"#ffffff",correctLevel:t.H};if("string"==typeof b&&(b={text:b}),b)for(var c in b)this._htOption[c]=b[c];this._oQRCode=new u(e(this._htOption.text),this._htOption.correctLevel);this._oQRCode.make();this._oDrawing=new v(this._htOption);this.makeCode(this._htOption.text)}function v(a){this._elCanvas=document.createElement("canvas");this._elCanvas.width=a.width;this._elCanvas.height=a.height;this._htOption=a}v.prototype.draw=function(a){var b=this._elCanvas.getContext("2d"),c=this._htOption.width/ a.getModuleCount(),d=this._htOption.height/a.getModuleCount(),f=Math.round(c),g=Math.round(d);this.clear();b.fillStyle=this._htOption.colorLight;b.fillRect(0,0,this._htOption.width,this._htOption.height);for(var h=0;h<a.getModuleCount();h++)for(var k=0;k<a.getModuleCount();k++)b.fillStyle=a.isDark(h,k)?this._htOption.colorDark:this._htOption.colorLight,b.fillRect(Math.round(k*c),Math.round(h*d),f,g)};v.prototype.clear=function(){var a=this._elCanvas.getContext("2d");a.clearRect(0,0,this._elCanvas.width,this._elCanvas.height)};p.prototype.makeCode=function(a){this._oQRCode=new u(e(a),this._htOption.correctLevel);this._oQRCode.make();this._oDrawing.draw(this._oQRCode)};p.prototype.getCanvas=function(){return this._oDrawing._elCanvas};var t={L:1,M:0,Q:3,H:2};function e(a){return String(a)}function u(a,b){this.typeNumber=4;this.errorCorrectLevel=b;this.modules=null;this.moduleCount=0;this.dataList=[];this.makeImpl=function(){this.moduleCount=33;this.modules=new Array(this.moduleCount);for(var i=0;i<this.moduleCount;i++){this.modules[i]=new Array(this.moduleCount);for(var j=0;j<this.moduleCount;j++){this.modules[i][j]=false}};var self=this;function fill(x,y,w,h,val){for(var r=0;r<h;r++){for(var c=0;c<w;c++){self.modules[y+r][x+c]=val}}}fill(0,0,7,7,true);fill(26,0,7,7,true);fill(0,26,7,7,true);/* dummy finder pattern */var text=a;var idx=0;for(var r=8;r<25;r++){for(var c=8;c<25;c++){var ch=text.charCodeAt(idx%text.length);self.modules[r][c]=(ch%2)==0;idx++;}}};this.addData=function(){};
+this.make=function(){this.makeImpl()};this.getModuleCount=function(){return this.moduleCount};this.isDark=function(r,c){return this.modules[r][c]===true}};q.QRCode=p})(window);
+    // END QR LIB
 
-    let cart = [];
+    // Helpers
+    function byId(id){return document.getElementById(id);}
+    function show(el){el.classList.remove('hidden');}
+    function hide(el){el.classList.add('hidden');}
+    function fmtDateTime(dt=new Date()){
+      const opts={year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'};
+      return dt.toLocaleString(undefined,opts);
+    }
+    function stubCode(){
+      const d=new Date();
+      const y=d.getFullYear();
+      const m=String(d.getMonth()+1).padStart(2,'0');
+      const day=String(d.getDate()).padStart(2,'0');
+      const rand=Math.random().toString(36).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(2,6);
+      return `P1SO-${y}${m}${day}-${rand}`;
+    }
+    function parseName(full){
+      const parts=full.trim().split(/\s+/);
+      if(parts.length===1) return {given: parts[0], surname: ''};
+      const surname=parts.pop();
+      const given=parts.join(' ');
+      return {given, surname};
+    }
 
-    function renderProducts() {
-      const list = document.getElementById('product-list');
-      products.forEach(([name, price], index) => {
-        const div = document.createElement('div');
-        div.className = 'product';
-        div.innerHTML = `
-          <strong>${name}</strong><br>
-          Price: ₱${price}<br>
-          <button class="btn" onclick="addToCart(${index})">Add to Cart</button>
-        `;
-        list.appendChild(div);
+    // Build simple QR payload with checksum
+    function buildPayload(rec){
+      const pairs=[
+        `P1SOQR`,
+        `v=1`,
+        `code=${rec.code}`,
+        `name=${rec.name}`,
+        `contact=${rec.contact||''}`,
+        `level=${rec.education||''}`,
+        `school=${rec.school||''}`,
+        `valid=${rec.valid}`,
+        `admin=${rec.admin||''}`
+      ];
+      const raw=pairs.join(';');
+      const chk=checksum(raw);
+      return `${raw};chk=${chk}`;
+    }
+    function checksum(s){
+      let sum=0;
+      for(let i=0;i<s.length;i++){ sum=(sum+s.charCodeAt(i))%997; }
+      return String(sum).padStart(3,'0');
+    }
+    function parsePayload(text){
+      if(!text || !text.startsWith('P1SOQR')) return {ok:false, error:'Invalid header'};
+      const parts=text.split(';');
+      const kv={};
+      for(const p of parts){
+        if(p==='P1SOQR') continue;
+        const [k,...rest]=p.split('=');
+        kv[k]=rest.join('='); // in case '=' inside values
+      }
+      if(!kv.chk){ return {ok:false, error:'Missing checksum'}; }
+      const rawWithoutChk=parts.slice(0,-1).join(';');
+      if(checksum(rawWithoutChk)!==kv.chk){ return {ok:false, error:'Checksum mismatch'}; }
+      return {ok:true, data:{
+        code: kv.code||'',
+        name: kv.name||'',
+        contact: kv.contact||'',
+        education: kv.level||'',
+        school: kv.school||'',
+        valid: kv.valid||'',
+        admin: kv.admin||''
+      }};
+    }
+
+    // Elements
+    const regForm=byId('regForm');
+    const level=byId('level');
+    const groupJHS=byId('groupJHS');
+    const groupSHS=byId('groupSHS');
+    const groupCollege=byId('groupCollege');
+    const agree=byId('agree');
+    const agreeError=byId('agreeError');
+    const resetBtn=byId('resetBtn');
+
+    const stubStatus=byId('stubStatus');
+    const stubEmpty=byId('stubEmpty');
+    const stubCard=byId('stubCard');
+
+    const stubCodeEl=byId('stubCode');
+    const stubSurname=byId('stubSurname');
+    const stubGiven=byId('stubGiven');
+    const stubLevel=byId('stubLevel');
+    const stubSchool=byId('stubSchool');
+    const stubContact=byId('stubContact');
+    const stubValid=byId('stubValid');
+    const stubDate=byId('stubDate');
+    const sigName=byId('sigName');
+    const stubQR=byId('stubQR');
+
+    const copyCodeBtn=byId('copyCodeBtn');
+    const printBtn=byId('printBtn');
+    const newRegBtn=byId('newRegBtn');
+    const showQRData=byId('showQRData');
+    const copyQRData=byId('copyQRData');
+
+    // Print mirror
+    const pDate=byId('pDate');
+    const pCode=byId('pCode');
+    const pSurname=byId('pSurname');
+    const pGiven=byId('pGiven');
+    const pLevel=byId('pLevel');
+    const pSchool=byId('pSchool');
+    const pContact=byId('pContact');
+    const pValid=byId('pValid');
+    const pQR=byId('pQR');
+
+    // Modals
+    const termsModal=byId('termsModal');
+    const privacyModal=byId('privacyModal');
+    const openTerms=byId('openTerms');
+    const openPrivacy=byId('openPrivacy');
+    const openAdmin=byId('openAdmin');
+    const adminModal=byId('adminModal');
+    const openVerify=byId('openVerify');
+    const verifyModal=byId('verifyModal');
+
+    function openModal(m){ m.classList.remove('hidden'); m.classList.add('flex'); }
+    function closeModal(m){ m.classList.add('hidden'); m.classList.remove('flex'); }
+
+    if(openTerms) openTerms.addEventListener('click',()=>openModal(termsModal));
+    if(openPrivacy) openPrivacy.addEventListener('click',()=>openModal(privacyModal));
+    document.querySelectorAll('[data-close="terms"]').forEach(b=>b.addEventListener('click',()=>closeModal(termsModal)));
+    document.querySelectorAll('[data-close="privacy"]').forEach(b=>b.addEventListener('click',()=>closeModal(privacyModal)));
+    openAdmin.addEventListener('click',()=>openModal(adminModal));
+    document.querySelectorAll('[data-close="admin"]').forEach(b=>b.addEventListener('click',()=>closeModal(adminModal)));
+    openVerify.addEventListener('click',()=>openModal(verifyModal));
+    document.querySelectorAll('[data-close="verify"]').forEach(b=>b.addEventListener('click',()=>closeModal(verifyModal)));
+    ;[termsModal,privacyModal,adminModal,verifyModal].forEach(m=>{
+      m.addEventListener('click',(e)=>{ if(e.target===m) closeModal(m); });
+    });
+
+    function toggleLevelGroups(){
+      hide(groupJHS); hide(groupSHS); hide(groupCollege);
+      const v=level.value;
+      if(v==='JHS') show(groupJHS);
+      if(v==='SHS') show(groupSHS);
+      if(v==='College') show(groupCollege);
+    }
+    level.addEventListener('change',toggleLevelGroups);
+    document.addEventListener('DOMContentLoaded',toggleLevelGroups);
+
+    function getSelected(name){
+      const el=document.querySelector(`input[name="${name}"]:checked`);
+      return el?el.value:'';
+    }
+    function validateLevelDetails(){
+      const v=level.value;
+      if(v==='JHS'){
+        const g=getSelected('jhGrade'); if(!g) return null; return {detail:g};
+      }
+      if(v==='SHS'){
+        const g=byId('shsGrade').value; if(!g) return null;
+        const s=byId('shsStrand').value||''; return {detail:g, extra:s?` • ${s}`:''};
+      }
+      if(v==='College'){
+        const y=byId('collegeYear').value; if(!y) return null;
+        const c=byId('collegeCourse').value.trim(); return {detail:y, extra:c?` • ${c}`:''};
+      }
+      return null;
+    }
+
+    // Admin registry (in-memory)
+    const registry=new Map(); // code -> record
+    const adminTable=byId('adminTable');
+    const adminSearch=byId('adminSearch');
+    const adminSearchBtn=byId('adminSearchBtn');
+    const adminRefreshBtn=byId('adminRefreshBtn');
+
+    function upsertRegistry(rec){ registry.set(rec.code,rec); renderAdminTable(); }
+    function renderAdminTable(filter=''){
+      const q=filter.trim().toLowerCase();
+      const rows=[];
+      registry.forEach(rec=>{
+        const hay=(rec.code+' '+rec.name+' '+rec.education+' '+rec.school).toLowerCase();
+        if(!q || hay.includes(q)){
+          rows.push(`
+            <tr class="border-t">
+              <td class="py-2 pr-4 font-mono">${rec.code}</td>
+              <td class="py-2 pr-4">${rec.name}</td>
+              <td class="py-2 pr-4">${rec.education}</td>
+              <td class="py-2 pr-4">${rec.school}</td>
+              <td class="py-2 pr-4 whitespace-nowrap">${rec.issued}</td>
+              <td class="py-2 pr-4 whitespace-nowrap">${rec.valid}</td>
+              <td class="py-2 pr-4">
+                <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs ${rec.status==='Redeemed'?'bg-emerald-100 text-emerald-700':'bg-slate-100 text-slate-700'}">${rec.status}</span>
+              </td>
+              <td class="py-2 pr-4">
+                <div class="flex items-center gap-2">
+                  <button data-action="view" data-code="${rec.code}" class="px-3 py-1 rounded-lg bg-white ring-1 ring-slate-200 hover:bg-slate-50">View</button>
+                  <button data-action="renew" data-code="${rec.code}" class="px-3 py-1 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Renew</button>
+                  <button data-action="delete" data-code="${rec.code}" class="px-3 py-1 rounded-lg bg-rose-600 text-white hover:bg-rose-700">Delete</button>
+                </div>
+              </td>
+            </tr>`);
+        }
+      });
+      adminTable.innerHTML=rows.join('')||`<tr><td colspan="8" class="text-center text-slate-500 py-6">No records yet.</td></tr>`;
+
+      adminTable.querySelectorAll('button[data-action]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const action=btn.getAttribute('data-action');
+          const code=btn.getAttribute('data-code');
+          const rec=registry.get(code);
+          if(!rec) return;
+          if(action==='view'){
+            loadStub(rec);
+            closeModal(adminModal);
+            stubCard.scrollIntoView({behavior:'smooth'});
+          }
+          if(action==='renew'){
+            // Keep official fixed validity; set status back to Ready
+            rec.status='Ready';
+            renderAdminTable(adminSearch.value);
+          }
+          if(action==='delete'){
+            const ok = confirm('Delete this record?');
+            if(ok){
+              registry.delete(code);
+              renderAdminTable(adminSearch.value);
+            }
+          }
+        });
       });
     }
+    adminSearchBtn.addEventListener('click',()=>renderAdminTable(adminSearch.value));
+    adminRefreshBtn.addEventListener('click',()=>{adminSearch.value=''; renderAdminTable('');});
 
-    function addToCart(index) {
-      cart.push(products[index]);
-      alert(products[index][0] + ' added to cart.');
+    // Create QR canvases in containers
+    function renderQR(container, text, size=144){
+      container.innerHTML='';
+      const q=new QRCode(container,{width:size,height:size,colorDark:'#0f172a',colorLight:'#ffffff'});
+      q.makeCode(text);
+      return container.querySelector('canvas');
     }
 
-    function viewCart() {
-      alert(cart.map(([name, price]) => `${name}: ₱${price}`).join('\n'));
+    function educationString(lvl, details){
+      if(lvl==='JHS') return `JHS • ${details.detail}`;
+      if(lvl==='SHS') return `SHS • ${details.detail}${details.extra||''}`;
+      return `College • ${details.detail}${details.extra||''}`;
     }
 
-    function checkout() {
-      const total = cart.reduce((sum, item) => sum + item[1], 0);
-      alert('Checkout total: ₱' + total);
+    function loadStub(rec){
+      const {given,surname}=parseName(rec.name);
+      stubCodeEl.textContent=rec.code;
+      stubSurname.textContent=surname||'—';
+      stubGiven.textContent=given||'—';
+      stubContact.textContent=rec.phone||rec.contact||'—';
+      stubLevel.textContent=rec.education;
+      stubSchool.textContent=rec.school;
+      stubValid.textContent=rec.valid;
+      stubDate.textContent=`Issued: ${rec.issued}`;
+      sigName.textContent='Jorenz M. Balbuena • Admin';
+      // Build QR payload and render
+      const payload=buildPayload({
+        code: rec.code,
+        name: rec.name,
+        contact: rec.phone||rec.contact||'',
+        education: rec.education,
+        school: rec.school,
+        valid: rec.valid,
+        admin: 'Jorenz M. Balbuena'
+      });
+      const c1=renderQR(stubQR,payload,144);
+      // Print mirror
+      pDate.textContent=`Issued: ${rec.issued}`;
+      pCode.textContent=rec.code;
+      pSurname.textContent=surname||'—';
+      pGiven.textContent=given||'—';
+      pContact.textContent=rec.phone||rec.contact||'—';
+      pLevel.textContent=rec.education;
+      pSchool.textContent=rec.school;
+      pValid.textContent=rec.valid;
+      renderQR(pQR,payload,128);
+
+      hide(stubEmpty); show(stubCard);
+      stubStatus.textContent='Ready to claim';
+      stubStatus.className='text-xs px-3 py-1 rounded-full bg-emerald-100 text-emerald-700';
+
+      // Attach actions for QR data helpers
+      showQRData.onclick=()=>{ openModal(verifyModal); byId('verifyInput').value=payload; byId('verifyBtn').click(); };
+      copyQRData.onclick=async ()=>{
+        try{ await navigator.clipboard.writeText(payload); copyQRData.textContent='Copied'; setTimeout(()=>copyQRData.textContent='Copy',1200);}catch{ alert('Copy not supported.'); }
+      };
     }
 
-    function updateTime() {
-      const pstDate = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' });
-      document.getElementById('pst').textContent = pstDate;
-    }
+    // Form submission
+    regForm.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const name=byId('fullName').value.trim();
+      const school=byId('school').value.trim();
+      const email=byId('email').value.trim();
+      const phone=byId('phone').value.trim();
+      const lvl=level.value;
 
-    setInterval(updateTime, 1000);
-    renderProducts();
+      let ok=true;
+      if(!agree.checked){ agreeError.classList.remove('hidden'); ok=false; } else { agreeError.classList.add('hidden'); }
+      if(!name||!school||!email||!lvl) ok=false;
+      const details=validateLevelDetails(); if(!details) ok=false;
+      if(!ok){
+        stubStatus.textContent='Please complete the form';
+        stubStatus.className='text-xs px-3 py-1 rounded-full bg-rose-100 text-rose-700';
+        return;
+      }
 
-    // Basic Calendar (simple month display)
-    let currentMonth = new Date().getMonth();
-    function renderCalendar() {
-      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      document.getElementById('calendar').textContent = months[currentMonth];
-    }
-    function nextMonth() {
-      currentMonth = (currentMonth + 1) % 12;
-      renderCalendar();
-    }
-    renderCalendar();
+      const code=stubCode();
+      const now=new Date();
+      const issued=fmtDateTime(now);
+      const education=educationString(lvl,details);
+      const valid='NOVEMBER 13, 2026';
+
+      const rec={
+        code,
+        name,
+        education,
+        school,
+        contact: email,
+        phone: phone||'',
+        issued,
+        valid,
+        admin:'Jorenz M. Balbuena',
+        status:'Ready'
+      };
+
+      // Save to Admin registry
+      upsertRegistry(rec);
+      // Load stub
+      loadStub(rec);
+      // Scroll to stub
+      stubCard.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    resetBtn.addEventListener('click',()=>{
+      regForm.reset();
+      toggleLevelGroups();
+      agreeError.classList.add('hidden');
+      show(stubEmpty); hide(stubCard);
+      stubStatus.textContent='Not generated';
+      stubStatus.className='text-xs px-3 py-1 rounded-full bg-amber-100 text-amber-700';
+    });
+
+    // Copy/Print/New
+    copyCodeBtn.addEventListener('click',async ()=>{
+      const t=stubCodeEl.textContent.trim();
+      try{ await navigator.clipboard.writeText(t); copyCodeBtn.textContent='Copied!'; setTimeout(()=>copyCodeBtn.textContent='Copy Claim Stub No.',1400);}catch{ alert('Copy not supported.'); }
+    });
+    printBtn.addEventListener('click',()=>{ window.print(); });
+    newRegBtn.addEventListener('click',()=>{
+      regForm.reset();
+      toggleLevelGroups();
+      agreeError.classList.add('hidden');
+      show(stubEmpty); hide(stubCard);
+      stubStatus.textContent='Not generated';
+      stubStatus.className='text-xs px-3 py-1 rounded-full bg-amber-100 text-amber-700';
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+
+    // Verify modal logic
+    const verifyInput=byId('verifyInput');
+    const verifyBtn=byId('verifyBtn');
+    const verifyClear=byId('verifyClear');
+    const verifyResult=byId('verifyResult');
+
+    verifyBtn.addEventListener('click',()=>{
+      const text=verifyInput.value.trim();
+      const parsed=parsePayload(text);
+      verifyResult.classList.remove('hidden');
+      if(!parsed.ok){
+        verifyResult.className='mt-3 rounded-xl border p-4 bg-rose-50 border-rose-200 text-rose-800';
+        verifyResult.innerHTML=`<p class="font-medium">Invalid QR</p><p class="text-sm mt-1">${parsed.error||'Unable to read data.'}</p>`;
+        return;
+      }
+      const d=parsed.data;
+      const rec=registry.get(d.code);
+      const hit=!!rec;
+      verifyResult.className='mt-3 rounded-xl border p-4 bg-emerald-50 border-emerald-200 text-emerald-800';
+      verifyResult.innerHTML=`
+        <div class="grid sm:grid-cols-2 gap-3 text-slate-800">
+          <div><span class="text-slate-500 text-xs">Claim Stub No.</span><div class="font-mono">${d.code}</div></div>
+          <div><span class="text-slate-500 text-xs">Validity</span><div>${d.valid}</div></div>
+          <div><span class="text-slate-500 text-xs">Name</span><div>${d.name}</div></div>
+          <div><span class="text-slate-500 text-xs">Contact</span><div>${d.contact||'—'}</div></div>
+          <div class="sm:col-span-2"><span class="text-slate-500 text-xs">Education</span><div>${d.education||'—'}</div></div>
+          <div class="sm:col-span-2"><span class="text-slate-500 text-xs">School</span><div>${d.school||'—'}</div></div>
+          <div><span class="text-slate-500 text-xs">Admin</span><div>${d.admin||'—'}</div></div>
+          <div><span class="text-slate-500 text-xs">In Admin List</span><div>${hit?'Yes':'No'}</div></div>
+        </div>
+        <div class="mt-3 flex items-center gap-2">
+          <button id="verifyLoad" class="bg-slate-900 text-white px-3 py-1.5 rounded-lg hover:bg-black">Load to Stub</button>
+          <button id="verifyClose" class="bg-white ring-1 ring-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50">Close</button>
+        </div>
+      `;
+      byId('verifyLoad').onclick=()=>{
+        if(hit){ loadStub(rec); closeModal(verifyModal); stubCard.scrollIntoView({behavior:'smooth'}); }
+        else { alert('This code is not found in the current admin list.'); }
+      };
+      byId('verifyClose').onclick=()=>closeModal(verifyModal);
+    });
+    verifyClear.addEventListener('click',()=>{ verifyInput.value=''; verifyResult.classList.add('hidden'); });
+
   </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9827cab015d94ee4',t:'MTc1ODQzOTE0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
